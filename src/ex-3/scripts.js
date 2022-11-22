@@ -1,18 +1,18 @@
-function saludarUsuario() {
-  //   let input = document.getElementById("input").value;
-  //   let div = document.getElementById("div");
-  //   let form = document.getElementById("form");
-  //   let button = document.getElementById("button");
-  //   button.addEventListener("click", () => {
-  //     button.preventDefault();
-  //     div.textContent = input;
-  //   });
-  //   console.log(input);
+// Escribe un programa que pida el nombre del usuario con un input y escriba un texto que diga “Hola <nombre-de-usuario>”
+
+function hiUser(content, nombre) {
+  content.innerHTML = `Hola ${nombre}`;
+  deleteHi(nombre, content);
 }
 
-let nombre = document.getElementById("input");
-const div = getElementById("div");
-div.innerHTML = `Hola`;
-console.log(div);
-console.log(nombre);
-// saludarUsuario();
+function deleteHi(element1, element2) {
+  if (element1 == "") element2.innerHTML = "";
+  console.log(element1);
+}
+
+input.addEventListener("keyup", () => {
+  const input = document.getElementById("input");
+  const div = document.getElementById("div");
+  let value = input.value;
+  hiUser(div, value);
+});
