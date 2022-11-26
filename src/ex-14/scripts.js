@@ -1,16 +1,45 @@
-// Añadir al ejercicio anterior que nos diga por cuál de los cuatro es divisible (hay que decir todos por los que es divisible)
+// Escribir un programa que escriba en pantalla los divisores comunes de dos números dados
 const button = document.querySelector(".button");
 const result = document.querySelector(".result");
 
-function printNumbsResult(numb, element) {
-  if (numb % 2 === 0) element.innerHTML = `El ${numb} es divisible por 2. <br>`;
-  if (numb % 3 === 0) element.innerHTML += `El ${numb} es divisible por 3. <br>`;
-  if (numb % 5 === 0) element.innerHTML += `El ${numb} es divisible por 5. <br>`;
-  if (numb % 7 === 0) element.innerHTML += `El ${numb} es divisible por 7. <br> `;
-  if (element.innerHTML === "") element.innerHTML = `El ${numb} NO es divisible por 2, 3, 5 o 7.`;
+function printNumbsResult(result, element) {
+  element.innerHTML = result;
+}
+
+function takeDividers(number, arr) {
+  for (let i = number; i >= 0; i--) {
+    if (number % i == 0) {
+      arr.push(i);
+    }
+  }
+}
+
+function ordenedArr(arr) {
+  return (arr = [...arr].sort());
+}
+
+function takeDuplicated(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i + 1] === arr1[i]) {
+      arr2.push(arr1[i]);
+    }
+  }
 }
 
 button.addEventListener("click", () => {
-  const numb = parseInt(document.querySelector(".numb").value);
-  printNumbsResult(numb, result);
+  const numb = parseInt(document.querySelector(".numb1").value);
+  const numb2 = parseInt(document.querySelector(".numb2").value);
+  let dividers = [];
+  let dividersRepeated = [];
+
+  takeDividers(numb, dividers);
+  takeDividers(numb2, dividers);
+  const orderedArray = ordenedArr(dividers);
+  takeDuplicated(orderedArray, dividersRepeated);
+
+  dividersRepeated = ` Los divisores en comun del ${numb} y ${numb2} son: ${dividersRepeated.join(
+    ", "
+  )}.`;
+
+  printNumbsResult(dividersRepeated, result);
 });
