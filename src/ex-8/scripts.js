@@ -19,7 +19,7 @@ function searchLetter(text) {
 }
 
 button.addEventListener("click", () => {
-  const text = document.querySelector(".text").value;
+  const text = document.querySelector(".text").value.toLowerCase();
   const divResult = document.querySelector(".result");
   const str = converStringToArray(text);
   divResult.innerHTML = searchLetter(str);

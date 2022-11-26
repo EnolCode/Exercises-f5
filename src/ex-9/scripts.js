@@ -19,7 +19,7 @@ function printVowelsResult(element, result) {
 
 button.addEventListener("click", () => {
   const regex1 = /[aeiou]/g;
-  const text = document.querySelector(".text").value;
+  const text = document.querySelector(".text").value.toLowerCase();
   let result = deleteVowelsDuplicates(searchVowels(text, regex1));
   printVowelsResult(document.querySelector(".result"), result);
 });
