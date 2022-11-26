@@ -1,16 +1,24 @@
-// Añadir al ejercicio anterior que nos diga por cuál de los cuatro es divisible (hay que decir todos por los que es divisible)
+// Escribir un programa que nos diga si un número dado es primo (no es divisible por ninguno otro número que no sea él mismo o la unidad
 const button = document.querySelector(".button");
 const result = document.querySelector(".result");
 
-function printNumbsResult(numb, element) {
-  if (numb % 2 === 0) element.innerHTML = `El ${numb} es divisible por 2. <br>`;
-  if (numb % 3 === 0) element.innerHTML += `El ${numb} es divisible por 3. <br>`;
-  if (numb % 5 === 0) element.innerHTML += `El ${numb} es divisible por 5. <br>`;
-  if (numb % 7 === 0) element.innerHTML += `El ${numb} es divisible por 7. <br> `;
-  if (element.innerHTML === "") element.innerHTML = `El ${numb} NO es divisible por 2, 3, 5 o 7.`;
+function printNumbsResult(arr, element, num) {
+  if (arr.length == 2) return (element.innerHTML = `El ${num} es un número primo`);
+  return (element.innerHTML = `El ${num} NO es un número primo`);
+}
+
+function primeNumber(numb, arr) {
+  for (let i = numb; i > 0; i--) {
+    if (numb % i == 0) {
+      arr.push(i);
+    }
+  }
+  return arr;
 }
 
 button.addEventListener("click", () => {
   const numb = parseInt(document.querySelector(".numb").value);
-  printNumbsResult(numb, result);
+  let primeNumbers = [];
+  primeNumber(numb, primeNumbers);
+  printNumbsResult(primeNumbers, result, numb);
 });
